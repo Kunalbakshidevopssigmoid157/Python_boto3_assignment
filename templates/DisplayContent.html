@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <table>
+        <tr>
+            <th> Name</th>
+            <th> Date </th>
+        </tr>
+        <tr>
+            {% for item in result.bucket %}
+            <tr>
+                <td> {{item.Name}}</td>
+                <td>{{item.CreationDate}}</td>
+
+        </tr>
+        {% endfor %}
+       
+       </table>
+       <form action="DisplayContentBucket" method="POST">
+        {% csrf_token %}
+        <input
+          type="text"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="UserBucketCreateAWSRegionForm" name = "ParticularBucket"
+          placeholder="Enter the bucket name"
+        />  </div>
+        <input
+          type="text"
+          class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          id="UserBucketCreateAWSRegionForm" name = "ParticularBucketAWSregion"
+          placeholder="Enter the  AWS Region"
+        />  </div>
+        <button type="submit" name ="ContentBucket"> Content of particular bucket</button></form>
+            <form action="deletingFiles" method="POST">
+                {% csrf_token %}
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="UserBucketCreateAWSRegionForm" name = "ParticularBucket"
+                  placeholder="Enter the bucket name"
+                />  </div>
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="UserBucketCreateAWSRegionForm" name = "ParticularFile"
+                  placeholder="Enter the file name"
+                />  </div>
+                <button type="submit" name ="DeleteFile"> Delete the files</button>
+    </form>
+    <form action="copyingFiles" method="POST">
+      {% csrf_token %}
+      <input
+        type="text"
+        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="UserBucketCreateAWSRegionForm" name = "SbucketName"
+        placeholder="Enter the source bucket name"
+      />  </div>
+      <input
+        type="text"
+        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="UserBucketCreateAWSRegionForm" name = "DbucketName"
+        placeholder="Enter the destination bucket name"
+      />  </div>
+      <input
+        type="text"
+        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        id="UserBucketCreateAWSRegionForm" name = "ParticularFile"
+        placeholder="Enter the bucket name"
+      />  </div>
+      <button type="submit" name ="CopyFiles"> Copy the files</button>
+</form>
+<form action="moveFiles" method="POST">
+  {% csrf_token %}
+  <input
+    type="text"
+    class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="UserBucketCreateAWSRegionForm" name = "SbucketName"
+    placeholder="Enter the source bucket name"
+  />  </div>
+  <input
+    type="text"
+    class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="UserBucketCreateAWSRegionForm" name = "DbucketName"
+    placeholder="Enter the destination bucket name"
+  />  </div>
+  <input
+    type="text"
+    class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+    id="UserBucketCreateAWSRegionForm" name = "ParticularFile"
+    placeholder="Enter the bucket name"
+  />  </div>
+  <button type="submit" name ="MoveFiles"> Move the files</button>
+</form>
+    </body>
+</html>
